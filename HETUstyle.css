@@ -21,7 +21,7 @@
 }
 
 h1{
-    height: 100px;
+    height: 200px;
     text-align: center;
     color:#4d2294;
     font-size: 100%;
@@ -57,4 +57,5 @@ h2 {
 .fejlec img {
     width: 150px; /* vagy bármilyen kívánt szélesség */
     height: auto; /* a magasság arányosan igazodik a szélességhez */
+
 }
