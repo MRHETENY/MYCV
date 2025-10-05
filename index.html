@@ -1,37 +1,70 @@
-<!DOCTYPE html>
-<html lang="hu">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HETU</title>
-    <link rel="stylesheet" href="./HETUstyle.css">
-</head>
-<body>
-    <audio src="BemutatkozasHetu.mp3" controls autoplay></audio>
-        <div class="maincontainer">
-        <div class="fejlec">
-            <img src="./manoken1.jpg" alt="Amikor még szép és fiatal voltam">
-            <img src="./manoken2.jpg" alt="Manökeniskolás képeim">
-            <img src="./erettsegi.jpg" alt="feketefehererdoskep">
-            <h1>MÁRTON RÓBERT HETÉNY</h1>
-        </div>
-    <a href="https://www.linkedin.com/in/hetény-róbert-márton-a49b4417" target="_blank">Márton R. Hetény LinkedIn profilja</a>
-        <div class="menubar">
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+    box-sizing: border-box;
+}
 
-        </div>
-        <div class="tartalom">
-            <div class="hirblokk">
-                <h2>Tartalom1</h2> 
-                <p>Ide kerül az oldal tartalma. A kép balra helyezkedik el, a szöveg pedig a kép köré igazodik. Ide kerül az oldal tartalma. A kép balra helyezkedik el, a szöveg pedig a kép köré igazodik. Ide kerül az oldal tartalma. A kép balra helyezkedik el, a szöveg pedig a kép köré igazodik. Ide kerül az oldal tartalma. A kép balra helyezkedik el, a szöveg pedig a kép köré igazodik. Ide kerül az oldal tartalma. A kép balra helyezkedik el, a szöveg pedig a kép köré igazodik. Ide kerül az oldal tartalma. A kép balra helyezkedik el, a szöveg pedig a kép köré igazodik. Ide kerül az oldal tartalma. A kép balra helyezkedik el, a szöveg pedig a kép köré igazodik. Ide kerül az oldal tartalma. A kép balra helyezkedik el, a szöveg pedig a kép köré igazodik. Ide kerül az oldal tartalma. A kép balra helyezkedik el, a szöveg pedig a kép köré igazodik. Ide kerül az oldal tartalma. A kép balra helyezkedik el, a szöveg pedig a kép köré igazodik. Ide kerül az oldal tartalma. A kép balra helyezkedik el, a szöveg pedig a kép köré igazodik. </p>          
-            </div>
-            <div class="hirblokk">
-                <h2>Tartalom2</h2>           
-                <p>Ide kerül az oldal tartalma. A kép balra helyezkedik el, a szöveg pedig a kép köré igazodik. Ide kerül az oldal tartalma. A kép balra helyezkedik el, a szöveg pedig a kép köré igazodik. Ide kerül az oldal tartalma. A kép balra helyezkedik el, a szöveg pedig a kép köré igazodik. Ide kerül az oldal tartalma. A kép balra helyezkedik el, a szöveg pedig a kép köré igazodik. Ide kerül az oldal tartalma. A kép balra helyezkedik el, a szöveg pedig a kép köré igazodik. Ide kerül az oldal tartalma. A kép balra helyezkedik el, a szöveg pedig a kép köré igazodik. Ide kerül az oldal tartalma. A kép balra helyezkedik el, a szöveg pedig a kép köré igazodik. Ide kerül az oldal tartalma. A kép balra helyezkedik el, a szöveg pedig a kép köré igazodik. Ide kerül az oldal tartalma. A kép balra helyezkedik el, a szöveg pedig a kép köré igazodik. Ide kerül az oldal tartalma. A kép balra helyezkedik el, a szöveg pedig a kép köré igazodik. Ide kerül az oldal tartalma. A kép balra helyezkedik el, a szöveg pedig a kép köré igazodik. </p>
-            </div>
-        </div>
-        <div class="lablec">
-            <p>Copyright "A.K.K." Informatikai Bt. - 2021</p>
-        </div>
-    </div>
-</body>
-</html>
+.body {
+    margin: 2 auto;
+}
+
+.fejlec {
+    background-color: #294b02;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight:100;
+    font-style: normal;
+    font-variation-settings:"wdth" 100;
+}
+
+.fejlec img{
+    float:left;
+}
+
+h1{
+    height: 100px;
+    text-align: center;
+    color:#d6d306;
+    font-size: 100%;
+}
+
+h2 {
+    background-color: #bbbbbb;
+    color: #ffffff25
+}
+
+.hirblokk img {
+    float:left;
+    padding: 0 20px 20px 0;
+}
+
+.hirblokk::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.hirblokk img {
+    float: middle;
+    padding: 0 20px 20px 0;
+}
+
+.hirblokk::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.fejlec img {
+    width: 150px; /* vagy bármilyen kívánt szélesség */
+    height: auto; /* a magasság arányosan igazodik a szélességhez */
+}
+
+/*
+ * STYLES.CSS FÁJLBA KERÜL
+ * Ez a részlet elrejti a zenelejátszót
+ */
+
+#zene {
+    display: none;
+    /* A display: none; a leghatékonyabb, mert a helyét sem foglalja el */
+}
