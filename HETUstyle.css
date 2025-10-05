@@ -21,9 +21,9 @@
 }
 
 h1{
-    height: 200px;
+    height: 100px;
     text-align: center;
-    color:#4d2294;
+    color:#d6d306;
     font-size: 100%;
 }
 
@@ -57,5 +57,14 @@ h2 {
 .fejlec img {
     width: 150px; /* vagy bármilyen kívánt szélesség */
     height: auto; /* a magasság arányosan igazodik a szélességhez */
+}
 
+/*
+ * STYLES.CSS FÁJLBA KERÜL
+ * Ez a részlet elrejti a zenelejátszót
+ */
+
+#zene {
+    display: none;
+    /* A display: none; a leghatékonyabb, mert a helyét sem foglalja el */
 }
