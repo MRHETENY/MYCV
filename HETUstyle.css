@@ -1,3 +1,35 @@
+body {
+    /* Az összes eddigi beállítás mellé, vagy az utolsó sorba */
+    cursor: url('faklya.png') 16 16, auto; /* VAGY .cur fájl esetén: url('faklya.cur'), auto; */
+    /* A 16 16 koordináták a hotspotot adják meg (a kép közepét) */
+    /* Ha a fáklya alja a cél, akkor pl. url('faklya.png') 16 32, auto; ha a kép 32x32px. */
+    /* Kísérletezz a koordinátákkal, hogy a fáklya megfelelő pontja legyen a kattintás helye. */
+}
+
+/* Egyéb kurzorok felülírása, ha szükséges (pl. linkek felett) */
+a, button {
+    cursor: url('faklya.png') 16 16, pointer; /* A linkek és gombok felett is fáklya legyen */
+}
+
+/* A piros pötty animációjához */
+.click-dot {
+    position: absolute;
+    width: 20px; /* Pötty mérete */
+    height: 20px;
+    background-color: red;
+    border-radius: 50%; /* Kör alak */
+    opacity: 0; /* Alapból láthatatlan */
+    transform: scale(0); /* Alapból nulla méretű */
+    transition: all 0.2s ease-out; /* Animáció simasága */
+    pointer-events: none; /* Fontos: ne zavarja a kattintást más elemeken */
+    z-index: 9999; /* Minden más elem felett legyen */
+}
+
+.click-dot.active {
+    opacity: 1; /* Megjelenés */
+    transform: scale(1); /* Növekedés */
+    transition: all 0.1s ease-out; /* Gyors megjelenés */
+}
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
@@ -121,3 +153,4 @@ h2 {
 #zene {
     display: none;
 }
+
