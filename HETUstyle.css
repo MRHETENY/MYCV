@@ -1,70 +1,123 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     box-sizing: border-box;
 }
 
-.body {
-    margin: 2 auto;
+/* HIBA JAVÍTÁSA: A 'body' elemre vonatkozó szabály a tag nevével kell kezdődjön, nem '.body'-val. */
+/* Ezenkívül a margin: 2 auto; nem érvényes CSS, a '2' mellé kell egység. Valószínűleg 2px-et akartál. */
+body {
+    margin: 0 auto; /* Középre igazítás */
+    font-family: "Roboto", sans-serif;
 }
 
+/* --- JAVÍTOTT FEJLÉC A FLEXBOX HASZNÁLATÁVAL --- */
 .fejlec {
     background-color: #294b02;
-    font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
-    font-weight:100;
+    font-weight: 100;
     font-style: normal;
-    font-variation-settings:"wdth" 100;
+    font-variation-settings: "wdth" 100;
+    
+    /* ÚJ: Flexbox beállítása az elemek (képek és h1) könnyebb elrendezéséhez */
+    display: flex;
+    flex-wrap: wrap; /* Engedi, hogy az elemek új sorba törjenek, ha szűk a hely */
+    align-items: center; /* Függőlegesen középre igazítja őket */
+    gap: 10px; /* Helyköz az elemek között */
+    padding: 10px;
 }
 
-.fejlec img{
-    float:left;
+/* JAVÍTÁS: Ezt a szabályt töröljük, mert helyette Flexboxot használunk */
+/* .fejlec img { float: left; } */
+
+
+.fejlec img {
+    /* Az összes kép méretét egységesítjük */
+    width: 120px; 
+    height: auto;
+    /* A flexbox miatt nem szükséges a float:left */
 }
 
-h1{
-    height: 100px;
+h1 {
+    /* JAVÍTÁS: A h1-nek ne adjunk fix magasságot, hagyjuk, hogy a tartalom mérete határozza meg. */
+    /* A font-size: 100% nagyon kicsi, nagyobb méret kell. */
+    flex-grow: 1; /* Hagyjuk, hogy a rendelkezésre álló helyet kitöltse */
     text-align: center;
-    color:#d6d306;
-    font-size: 100%;
+    color: #d6d306;
+    font-size: 2.2em; /* Állítsunk be egy olvasható méretet */
+    margin: 0; /* Alapértelmezett margin eltávolítása a jobb elrendezés érdekében */
+    padding: 10px;
 }
 
+/* --- A LINKEK ALAPFORMÁZÁSA --- */
+/* Ez formázza a fő linket, hogy külön sorban jelenjen meg, olvashatóan */
+body > a[target="_blank"] {
+    display: block; /* Teljes szélességet foglaljon el */
+    text-align: center;
+    padding: 10px;
+    background-color: #4CAF50; /* Zöld háttér az olvashatóságért */
+    color: white;
+    text-decoration: none;
+}
+
+
+/* Az alábbi részek formázása rendben van, de a float: middle; nem érvényes, azt töröltem. */
 h2 {
     background-color: #bbbbbb;
-    color: #ffffff25
+    color: #ffffff; /* A kódodban #ffffff25 szerepelt, ami nagyon áttetsző, ezért tettem #ffffff-t */
+    padding: 5px 10px;
 }
 
 .hirblokk img {
-    float:left;
+    float: left;
     padding: 0 20px 20px 0;
+    max-width: 100%; /* Hogy a képek kisebb képernyőn is elférjenek */
+    height: auto;
 }
 
-.hirblokk::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.hirblokk img {
-    float: middle;
-    padding: 0 20px 20px 0;
-}
-
+/* KÉTSZER VOLT BENNE, EGYET ELTÁVOLÍTOTTAM, A MÁSIKBAN JAVÍTOTTAM A float: middle; -t */
+/* A float: left; és a clear: both; helyes a szöveg körbefuttatására a képek körül */
 .hirblokk::after {
     content: "";
     clear: both;
     display: table;
 }
 
-.fejlec img {
-    width: 150px; /* vagy bármilyen kívánt szélesség */
-    height: auto; /* a magasság arányosan igazodik a szélességhez */
+/* --- MEDIA QUERY MOBIL KÉSZÜLÉKEKHEZ --- */
+/* Ezen beállítások csak 768px képernyőméret alatt lépnek életbe (telefonok, kisebb tabletek) */
+@media (max-width: 768px) {
+    
+    .fejlec {
+        /* Mobil nézetben egymás alá rendezzük a képeket és a címet (oszlopba) */
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .fejlec img {
+        /* Kisebb képek mobil nézetben */
+        width: 100px;
+        margin-bottom: 5px;
+    }
+
+    h1 {
+        font-size: 1.8em; /* Kicsit kisebb, de olvasható betűméret */
+        /* A flex-grow: 1; továbbra is érvényes, de most a teljes szélességet foglalja el */
+    }
+    
+    /* A hirblokk képeinek kezelése mobil nézetben: eltöröljük a lebegtetést,
+       hogy a kép külön sorban jelenjen meg a szöveg előtt */
+    .hirblokk img {
+        float: none; /* Megszüntetjük a szöveg körbefuttatását */
+        display: block; /* A kép teljes szélességet foglaljon el */
+        margin: 0 auto 10px auto; /* Középre igazítjuk és adunk alá helyet */
+        width: 80%; /* Kicsit kisebb, mint 100%, hogy ne érjen a széléig */
+    }
 }
 
 /*
  * STYLES.CSS FÁJLBA KERÜL
  * Ez a részlet elrejti a zenelejátszót
  */
-
 #zene {
     display: none;
-    /* A display: none; a leghatékonyabb, mert a helyét sem foglalja el */
 }
