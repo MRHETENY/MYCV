@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="hu+en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,27 +9,32 @@
 <audio id="zene" src="mtcsinalsz.mp3"></audio>
 <script>
     // 1. Megszerezzük a zene elemet az ID alapján
-    const zenelejatszo = document.getElementById('zene'); 
+    const zenelejatszo = document.getElementById('zene');
     
     // 2. Létrehozzuk az eseménykezelő funkciót
-    function zeneInditasKattintasra() {
+    function zeneInditasKattintasra(event) {
+        // ELLENŐRZÉS: Megnézzük, hogy a kattintás célpontja egy link (<a>) elem-e.
+        // Ha a célpont egy <a> elem, akkor *nem* játsszuk le a zenét.
+        if (event.target.tagName.toLowerCase() === 'a') {
+            // Kilépünk a funkcióból, ha linkre kattintottunk.
+            return;
+        }
+
         // Ellenőrizzük, hogy a zene elindult-e már, nehogy többször induljon el
         if (zenelejatszo.paused) {
             zenelejatszo.play();
             
-            // Ha már egyszer elindult, többé ne fussunk le.
-            // Ezzel eltávolítjuk az eseményfigyelőt a kattintás után.
-            //document.removeEventListener('click', zeneInditasKattintasra);
+            // Ha egyszer kell elindulnia, akkor ezt vedd vissza:
+            // document.removeEventListener('click', zeneInditasKattintasra);
         }
     }
     
     // 3. Hozzáadjuk az eseményfigyelőt a dokumentum egészéhez
-    // Bármely kattintásra elindul a zeneInditasKattintasra nevű funkció
     document.addEventListener('click', zeneInditasKattintasra);
     
     
-    // ... (A pop-up closePopup, openPopup funkciói itt vannak) ...
-
+    // Ide tedd vissza a többi JavaScript kódot, ami a pop-up-ért felelős!
+    
     window.onload = function() {
         // ... (A pop-up setTimeout itt van) ...
     }
@@ -63,3 +68,4 @@
     </div>
 </body>
 </html>
+
