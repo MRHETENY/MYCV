@@ -38,6 +38,48 @@
     window.onload = function() {
         // ... (A pop-up setTimeout itt van) ...
     }
+    <script>
+    // ... (Eddigi zenelejátszás kódod) ...
+
+    // Piros pötty kattintási effektus
+    document.addEventListener('click', function(event) {
+        // Ellenőrizzük, hogy nem linkre vagy gombra kattintottunk-e, ha nem akarjuk, hogy ott is pötty legyen
+        if (event.target.tagName.toLowerCase() === 'a' || event.target.tagName.toLowerCase() === 'button') {
+            return; 
+        }
+
+        // Létrehozzuk a piros pötty elemet
+        const clickDot = document.createElement('div');
+        clickDot.classList.add('click-dot');
+        
+        // Pozícionáljuk a kattintás helyére
+        // event.clientX és event.clientY a kattintás képernyő koordinátái
+        // A pötty méretét levonjuk, hogy középre kerüljön a kurzorhoz képest
+        clickDot.style.left = (event.clientX - 10) + 'px'; // 10px a pötty szélességének/2
+        clickDot.style.top = (event.clientY - 10) + 'px';  // 10px a pötty magasságának/2
+        
+        // Hozzáadjuk a body-hoz
+        document.body.appendChild(clickDot);
+        
+        // Aktiváljuk az animációt (megjelenés és növekedés)
+        // SetTimeout szükséges, hogy a böngészőnek legyen ideje renderelni az elemet, mielőtt az active osztályt hozzáadnánk
+        setTimeout(() => {
+            clickDot.classList.add('active');
+        }, 10); // Kicsi késleltetés
+
+        // Eltüntetjük és eltávolítjuk a pöttyöt egy rövid idő után
+        setTimeout(() => {
+            clickDot.classList.remove('active'); // Eltünteti
+            // Várjuk meg, míg az eltűnési animáció befejeződik, mielőtt teljesen eltávolítanánk
+            clickDot.addEventListener('transitionend', () => {
+                clickDot.remove();
+            }, { once: true }); // Csak egyszer figyelje az eseményt
+        }, 300); // 300 ms után kezdjen eltűnni
+    });
+
+
+    // ... (További JavaScript kódod, pl. window.onload, pop-up) ...
+</script>
 </script>
 <body>
     <audio src="BemutatkozasHetu.mp3" controls autoplay></audio>
@@ -68,4 +110,5 @@
     </div>
 </body>
 </html>
+
 
