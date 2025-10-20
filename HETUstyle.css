@@ -1,3 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+/* --- AZ ÖSSZEVONT ÉS JAVÍTOTT BODY BLOKK --- */
+body {
+    /* Reszponzivitás és betűtípus */
+    margin: 0 auto;
+    font-family: "Roboto", sans-serif;
+
+    /* A hiányzó FÁKLYA KURZOR beállításai! */
+    cursor: url('faklya.png') 16 16, auto;
+    /* A 16 16 koordináták a hotspotot adják meg (a kép közepét). */
+}
+
+/* Egyéb kurzorok felülírása, ha szükséges (pl. linkek felett) */
+a, button {
+    cursor: url('faklya.png') 16 16, pointer; /* A linkek és gombok felett is fáklya legyen */
+}
+
+/* --- INNENTŐL KEZDŐDNEK A MÁR MEGLÉVŐ TOVÁBBI SZABÁLYAID --- */
+.fejlec {
+    background-color: #294b02;
+    /* ... a többi fejlec stílus ... */
+}
+/* ... és így tovább a fájl többi részével ... */
+
+/* A piros pötty animációjához (ez maradhat a helyén) */
+.click-dot {
+    /* ... */
+}
+/* ... */
+
 body {
     /* Az összes eddigi beállítás mellé, vagy az utolsó sorba */
     cursor: url('faklya.png') 16 16, auto; /* VAGY .cur fájl esetén: url('faklya.cur'), auto; */
@@ -30,11 +65,11 @@ a, button {
     transform: scale(1); /* Növekedés */
     transition: all 0.1s ease-out; /* Gyors megjelenés */
 }
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
     box-sizing: border-box;
-}
+} */
 
 /* HIBA JAVÍTÁSA: A 'body' elemre vonatkozó szabály a tag nevével kell kezdődjön, nem '.body'-val. */
 /* Ezenkívül a margin: 2 auto; nem érvényes CSS, a '2' mellé kell egység. Valószínűleg 2px-et akartál. */
@@ -153,4 +188,5 @@ h2 {
 #zene {
     display: none;
 }
+
 
