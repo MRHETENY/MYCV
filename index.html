@@ -9,78 +9,47 @@
 </head>
 <audio id="zene" src="mtcsinalsz.mp3"></audio>
 <script>
-    // 1. Megszerezzük a zene elemet az ID alapján
     const zenelejatszo = document.getElementById('zene');
     
-    // 2. Létrehozzuk az eseménykezelő funkciót
     function zeneInditasKattintasra(event) {
-        // ELLENŐRZÉS: Megnézzük, hogy a kattintás célpontja egy link (<a>) elem-e.
-        // Ha a célpont egy <a> elem, akkor *nem* játsszuk le a zenét.
         if (event.target.tagName.toLowerCase() === 'a') {
-            // Kilépünk a funkcióból, ha linkre kattintottunk.
             return;
         }
 
-        // Ellenőrizzük, hogy a zene elindult-e már, nehogy többször induljon el
         if (zenelejatszo.paused) {
-            zenelejatszo.play();
-            
-            // Ha egyszer kell elindulnia, akkor ezt vedd vissza:
-            // document.removeEventListener('click', zeneInditasKattintasra);
+            zenelejatszo.play();            
         }
     }
     
-    // 3. Hozzáadjuk az eseményfigyelőt a dokumentum egészéhez
     document.addEventListener('click', zeneInditasKattintasra);
-    
-    
-    // Ide tedd vissza a többi JavaScript kódot, ami a pop-up-ért felelős!
-    
+     
     window.onload = function() {
-        // ... (A pop-up setTimeout itt van) ...
     }
     
-    // ... (Eddigi zenelejátszás kódod) ...
-
-    // Piros pötty kattintási effektus
     document.addEventListener('click', function(event) {
-        // Ellenőrizzük, hogy nem linkre vagy gombra kattintottunk-e, ha nem akarjuk, hogy ott is pötty legyen
         if (event.target.tagName.toLowerCase() === 'a' || event.target.tagName.toLowerCase() === 'button') {
             return; 
         }
 
-        // Létrehozzuk a piros pötty elemet
         const clickDot = document.createElement('div');
         clickDot.classList.add('click-dot');
         
-        // Pozícionáljuk a kattintás helyére
-        // event.clientX és event.clientY a kattintás képernyő koordinátái
-        // A pötty méretét levonjuk, hogy középre kerüljön a kurzorhoz képest
         clickDot.style.left = (event.clientX - 10) + 'px'; // 10px a pötty szélességének/2
         clickDot.style.top = (event.clientY - 10) + 'px';  // 10px a pötty magasságának/2
         
-        // Hozzáadjuk a body-hoz
         document.body.appendChild(clickDot);
         
-        // Aktiváljuk az animációt (megjelenés és növekedés)
-        // SetTimeout szükséges, hogy a böngészőnek legyen ideje renderelni az elemet, mielőtt az active osztályt hozzáadnánk
         setTimeout(() => {
             clickDot.classList.add('active');
-        }, 10); // Kicsi késleltetés
+        }, 10);
 
-        // Eltüntetjük és eltávolítjuk a pöttyöt egy rövid idő után
         setTimeout(() => {
             clickDot.classList.remove('active'); // Eltünteti
-            // Várjuk meg, míg az eltűnési animáció befejeződik, mielőtt teljesen eltávolítanánk
             clickDot.addEventListener('transitionend', () => {
                 clickDot.remove();
-            }, { once: true }); // Csak egyszer figyelje az eseményt
-        }, 300); // 300 ms után kezdjen eltűnni
+            }, { once: true });
+        }, 300);
     });
-
-
-    // ... (További JavaScript kódod, pl. window.onload, pop-up) ...
-
 </script>
 <body>
     <audio src="BemutatkozasHetu.mp3" controls autoplay></audio>
@@ -111,8 +80,3 @@
     </div>
 </body>
 </html>
-
-
-
-
-
