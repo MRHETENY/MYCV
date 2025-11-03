@@ -4,28 +4,16 @@
     box-sizing: border-box;
 }
 
-/* ---------------------------------------------------- */
-/* --- BODY STÍLUSOK (BETŰTÍPUS, MARGIN, KURZOR) --- */
-/* ---------------------------------------------------- */
 body {
-    /* Alapvető beállítások */
     margin: 0 auto;
     font-family: "Roboto", sans-serif;
-    
-    /* FÁKLYA KURZOR beállítása:
-       Kérlek, győződj meg róla, hogy a feltöltött kép neve pontosan 'faklya.png' */
     cursor: url('faklya.png') 16 16, url('faklya.cur'), auto; 
-    /* A böngésző a legelsőt próbálja, ami működik. A 16 16 a hotspot (a kép közepe). */
-}
+    }
 
-/* Egyedi kurzor beállítása linkek és gombok felett */
 a, button {
     cursor: url('faklya.png') 16 16, url('faklya.cur'), pointer; 
 }
 
-/* ---------------------------------------------------- */
-/* --- FEJLÉC (HEADER) ÉS CÍMEK STÍLUSAI --- */
-/* ---------------------------------------------------- */
 .fejlec {
     background-color: #294b02;
     font-optical-sizing: auto;
@@ -33,7 +21,6 @@ a, button {
     font-style: normal;
     font-variation-settings: "wdth" 100;
     
-    /* Flexbox a reszponzív elrendezéshez */
     display: flex;
     flex-wrap: wrap; 
     align-items: center; 
@@ -42,13 +29,11 @@ a, button {
 }
 
 .fejlec img {
-    /* Képek méretének egységesítése */
     width: 120px; 
     height: auto;
 }
 
 h1 {
-    /* Név címe */
     flex-grow: 1; 
     text-align: center;
     color: #d6d306;
@@ -57,7 +42,6 @@ h1 {
     padding: 10px;
 }
 
-/* --- A LINKEK ALAPFORMÁZÁSA (LinkedIn) --- */
 body > a[target="_blank"] {
     display: block; 
     text-align: center;
@@ -67,10 +51,6 @@ body > a[target="_blank"] {
     text-decoration: none;
 }
 
-
-/* ---------------------------------------------------- */
-/* --- TARTALOM ÉS HÍRBLOKKOK --- */
-/* ---------------------------------------------------- */
 h2 {
     background-color: #bbbbbb;
     color: #ffffff; 
@@ -84,16 +64,12 @@ h2 {
     height: auto;
 }
 
-/* Float tisztítása (clear: both) */
 .hirblokk::after {
     content: "";
     clear: both;
     display: table;
 }
 
-/* ---------------------------------------------------- */
-/* --- PIROS PÖTTY ANIMÁCIÓ --- */
-/* ---------------------------------------------------- */
 .click-dot {
     position: absolute;
     width: 20px; 
@@ -113,13 +89,9 @@ h2 {
     transition: all 0.1s ease-out; 
 }
 
-/* ---------------------------------------------------- */
-/* --- MEDIA QUERY MOBIL KÉSZÜLÉKEKHEZ (MAX 768px) --- */
-/* ---------------------------------------------------- */
 @media (max-width: 768px) {
     
     .fejlec {
-        /* Oszlop elrendezés telefonon */
         flex-direction: column;
         text-align: center;
     }
@@ -134,7 +106,6 @@ h2 {
     }
     
     .hirblokk img {
-        /* Kép blokkban középre igazítása és lebegtetés eltávolítása */
         float: none; 
         display: block; 
         margin: 0 auto 10px auto; 
@@ -142,7 +113,6 @@ h2 {
     }
 }
 
-/* A rejtett zenelejátszó */
 #zene {
     display: none;
 }
